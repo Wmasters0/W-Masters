@@ -23,7 +23,10 @@
     "@sanity/vision": "^3.68.3",
     "groq": "^3.68.3",
     "@portabletext/react": "^3.2.1",
-    "@sanity/image-url": "^1.1.0"
+    "@sanity/image-url": "^1.1.0",
+    "lucide-react": "^0.468.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "name": "w-masters-sanity",
+  "private": true
 }
