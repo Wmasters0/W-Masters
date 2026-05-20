@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "trading_analyses"
+    label: "Trading Αναλύσεις"
+    folder: "content/analyses"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.ticker}}-{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Ανάλυση της Εβδομάδας", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Τίτλος", name: "title", widget: "string" }
+      - { label: "Ημερομηνία", name: "date", widget: "datetime" }
+      - { label: "Ticker", name: "ticker", widget: "string" }
+      - { label: "Αγορά", name: "market", widget: "select", options: ["Crypto", "Stocks", "Forex", "Commodities", "Indexes"] }
+      - { label: "Timeframe", name: "timeframe", widget: "string" }
+      - { label: "Bias", name: "bias", widget: "select", options: ["Bullish", "Bearish", "Neutral", "Range"] }
+      - { label: "Setup Type", name: "setup_type", widget: "string" }
+      - { label: "Entry Zone", name: "entry_zone", widget: "string", required: false }
+      - { label: "Targets", name: "targets", widget: "list", required: false, field: { label: "Target", name: "target", widget: "string" } }
+      - { label: "Stop Loss / Invalidation", name: "stop_loss", widget: "string", required: false }
+      - { label: "Risk Reward", name: "risk_reward", widget: "string", required: false }
+      - { label: "Chart Image", name: "chart_image", widget: "image", required: false }
+      - { label: "Σύντομη Περίληψη", name: "summary", widget: "text" }
+      - { label: "Πλήρης Ανάλυση", name: "body", widget: "markdown" }
+
+  - name: "signals"
+    label: "Signal Tracker / ROI"
+    folder: "content/signals"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.asset}}-{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Asset", name: "asset", widget: "string", hint: "π.χ. BTCUSDT, RAVEUSDT" }
+      - { label: "Ημερομηνία", name: "date", widget: "datetime" }
+      - { label: "Setup", name: "setup", widget: "string", hint: "π.χ. Long 5X, Limit Long, Breakout" }
+      - { label: "Exchange", name: "exchange", widget: "string", required: false }
+      - { label: "Entry", name: "entry", widget: "string", required: false }
+      - { label: "Exit / Target", name: "exit", widget: "string", required: false }
+      - { label: "ROI / Απόδοση", name: "roi", widget: "string", hint: "π.χ. +57.18%" }
+      - { label: "Status", name: "status", widget: "select", options: ["Open", "Closed", "Invalidated", "Watchlist"] }
+      - { label: "Screenshot", name: "image", widget: "image", required: false }
+      - { label: "Σχόλια", name: "body", widget: "markdown", required: false }
+
+  - name: "learn_trading"
+    label: "Learn Trading Posts"
+    folder: "content/learn"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Τίτλος", name: "title", widget: "string" }
+      - { label: "Ημερομηνία", name: "date", widget: "datetime" }
+      - { label: "Κατηγορία", name: "category", widget: "select", options: ["Market Structure", "Liquidity", "Risk Management", "Psychology", "Macro", "Beginner"] }
+      - { label: "Επίπεδο", name: "level", widget: "select", options: ["Beginner", "Intermediate", "Advanced"] }
+      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
+      - { label: "Σύντομη Περίληψη", name: "summary", widget: "text" }
+      - { label: "Μάθημα / Άρθρο", name: "body", widget: "markdown" }
